@@ -7,7 +7,9 @@
  Date:         Oct. 16, 2022
  */
 
-#pragma once
+// TODO: uncomment below
+// #pragma once
+#define MAXLEN 50
 
  /******************************************************************
 	PLEASE EDIT THIS FILE
@@ -20,10 +22,12 @@
 typedef struct airplane {
 	// Add your member elements here
 	int flight_number;
-	char* city_orgin;
+	char* city_origin;
 	char* city_destination;
+	// char* city_origin[MAXLEN];
+	// char* city_destination[MAXLEN];
 	int priority;
-	int maximum_speed;
+	int maximum_speed_kph;
 	int cruising_altitude;
 	int capacity;
 } airplane;
@@ -31,6 +35,8 @@ typedef struct airplane {
 /* Insert your node structure here.  Use the correct types and names for the elements! */
 typedef struct node {
 	// Add your member elements here
+	struct airplane plane;
+	struct node* next;
 } node;
 
 /* Prototypes for in-lab functions (do not add anything here) */

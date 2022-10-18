@@ -32,7 +32,7 @@
 node* create_linked_list()
 {
   // Insert your code here
-
+  return NULL;
 }
 
 /*
@@ -50,8 +50,29 @@ node* create_node(airplane plane)
 {
   // Insert your code here
 
-  // replace this line with something appropriate
-  return NULL;
+  // allocate heap memory for the new node
+  struct node* newnode = (struct node*) malloc(sizeof(struct node));
+  newnode->plane.flight_number = plane.flight_number;
+  newnode->plane.priority = plane.priority;
+  newnode->plane.maximum_speed_kph = plane.maximum_speed_kph;
+  newnode->plane.cruising_altitude = plane.cruising_altitude;
+  newnode->plane.capacity = plane.capacity;
+
+  // allocate heap memory for char arrays in airplane struct
+  char* plane_city_origin = (char*) malloc(sizeof(char) * strlen(plane.city_origin));
+  strcpy(plane_city_origin, plane.city_origin);
+  newnode->plane.city_origin = plane_city_origin;
+  // plane_city_origin = plane.city_origin;
+  printf("FUNC newnode->myplane.city_dest = %s\n", newnode->plane.city_origin);
+
+  char* plane_city_destination = (char*) malloc(sizeof(char) * strlen(plane.city_destination));
+  strcpy(plane_city_destination, plane.city_destination);
+  newnode->plane.city_destination = plane_city_destination;
+  // plane_city_destination = plane.city_destination;
+  printf("FUNC myplane.city_dest = %s\n", newnode->plane.city_destination);
+
+
+  return newnode;
 }
 
 /*
@@ -68,9 +89,9 @@ node* create_node(airplane plane)
 node* prepend_node(node* list, node* new_node)
 {
   // Insert your code here
-
-  // replace this line with something appropriate
-  return NULL;
+  new_node->next = list;
+  list = new_node;
+  return list;
 }
 
 /*
