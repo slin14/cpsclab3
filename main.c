@@ -32,6 +32,9 @@
      THEN 0 ELSE 1
  */
 
+
+// gcc main.c linkedlist.c linkedlist.h -o lab3
+
 void print_my_list(node* list) {
   if (list == NULL) {
     return;
@@ -152,6 +155,9 @@ int main(void)
   // // TEST DELETE_LIST
   // printf("\n\n\ndeleting my list...\n\n\n");
   // my_list=delete_list(my_list);
+  // print_list(my_list);
+
+  // my_list = delete_list(NULL);
   // print_list(my_list);
 
   // TEST swap
