@@ -164,13 +164,14 @@ node* delete_list(node* list)
     return NULL;
   }
   node* to_free = list;
-  node* temp = list-> next;
-  free(to_free);
-  while(temp->next!= NULL) {
+  node* temp = list;
+
+  do {
     to_free = temp;
     free(to_free);
     temp = temp-> next;
-  }
+  } while(temp->next!= NULL);
+
   return NULL;
 }
 
