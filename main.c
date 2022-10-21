@@ -70,6 +70,13 @@ int main(void)
 {
   node* my_node;
   node* test;
+  node* my_empty_list = NULL;
+  node* node1;
+  node* node2;
+  node* node3;
+  node* result;
+  node* my_list;
+  
   my_node = create_linked_list();
   // printf("flight_number = %d\n", my_node->plane.flight_number);
   // printf("next = %p\n", my_node->next);
@@ -88,6 +95,7 @@ int main(void)
   // printf("strlen(dest) = %d\n", strlen(myplane.city_destination));
 
   my_node = create_node(myplane);
+  node1 = create_node(myplane);
   // printf("origin = %s\n", my_node->plane.city_destination);
 
   // printf("\n");
@@ -104,38 +112,11 @@ int main(void)
                       .maximum_speed_kph = 2000,
                       .cruising_altitude = 40000,
                       .capacity = 40 };
-  node* node2;
+  
   node2 = create_node(plane2);
   // printf("node2->plane.city_destination = %s\n", node2->plane.city_destination);
   // printf("node2->plane.flight_number = %d\n", node2->plane.flight_number);
 
-  node* my_list = prepend_node(node2, my_node);
-  // printf("after prepend\n");
-  // printf("first node dest = %s\n", my_list->plane.city_destination);
-  // printf("2nd node dest = %s\n", my_list->next->plane.city_destination);
-
-  // print_my_list(my_list);
-
-  // // TESTING DELETE_NODE
-  // node* my_list_shortened = NULL;
-  // my_list_shortened = delete_node(my_list);
-  // // print_my_list(my_list_shortened);
-
-  node* my_empty_list = NULL;
-  // create_linked_list(my_empty_list);
-  // node* result = NULL;
-  // result = delete_node(my_empty_list);
-  // // printf("result = %p\n", result);
-
-  // TESTING COUNT NUM NODES
-  int len;
-  len = get_length(my_list);
-  print_my_list(my_list);
-  printf("my_list length = %d\n", len);
-
-  len = get_length(my_empty_list);
-  printf("empty_list length = %d\n", len);
-  printf("\n");
 
   airplane plane3 = {.flight_number = 3, 
                       .city_origin = "New Brunswick",
@@ -144,25 +125,103 @@ int main(void)
                       .maximum_speed_kph = 2000,
                       .cruising_altitude = 40000,
                       .capacity = 40 };
-  node* node3 = create_node(plane3);
+  node3 = create_node(plane3);
   // print_node(node3);
 
+  airplane plane4 = {.flight_number = 4, 
+                      .city_origin = "Taipei",
+                      .city_destination = "Hong Kong",
+                      .priority = 4,
+                      .maximum_speed_kph = 2000,
+                      .cruising_altitude = 40000,
+                      .capacity = 40 };
+  node* node4 = create_node(plane4);
 
-  my_list->next->next = node3;
-  print_my_list(my_list);
-  print_list(my_list);
+  // TEST PREPEND
+  // printf("\n\ntrying stuff\n\n");
+  // my_list = node1;
+  // node1->next = node2;
+  // print_list(my_list);
+
+  // printf("\n\n\n prepending to a node...\n\n\n");
+  // my_list = prepend_node(node2, my_node);
+  // print_list(my_list);
+  // printf("\n");
+
+  // printf("\n\n\n prepending to a list...\n\n\n");
+  // result = prepend_node(my_list, node3);
+  // print_list(result);
+  // printf("\n");
+
+  
+  // printf("after prepend\n");
+
+  // // TESTING DELETE_NODE
+  // print_list(my_list);
+  // printf("\n\n\ndeleting my node...\n\n\n");
+  // node* my_list_shortened = NULL;
+  // my_list_shortened = delete_node(my_list);
+  // print_list(my_list);
+  // printf("\n");
+  // print_list(my_list_shortened);
+
+  // create_linked_list(my_empty_list);
+  // node* result = NULL;
+  // result = delete_node(my_empty_list);
+
+  // // TESTING COUNT NUM NODES
+  // int len;
+  // len = get_length(my_list);
+  // print_my_list(my_list);
+  // printf("my_list length = %d\n", len);
+
+  // len = get_length(my_empty_list);
+  // printf("empty_list length = %d\n", len);
+  // printf("\n");
+
+  
+  
+  // print_list(my_list);
 
 
   // // TEST DELETE_LIST
-  printf("\n\n\ndeleting my list...\n\n\n");
-  test=delete_list(my_list);
-  print_list(my_list);
+  // printf("\n\n\ndeleting my list...\n\n\n");
+  // test=delete_list(my_list);
+  // print_list(my_list);
 
   // my_list = delete_list(NULL);
   // print_list(my_list);
 
   // TEST swap
 
+
+  // // TEST RETRIEVE
+  // result = retrieve_nth(my_list, 2);
+  // print_node(result);
+  // printf("\n");
+
+  // result = retrieve_nth(NULL, 2);
+  // print_node(result);
+
+  // // TEST INSERT NTH
+  // my_list = prepend_node(node4, node3); 
+  // my_list = prepend_node(my_list, node2); // 2,3,4
+  // printf("\n\n\n inserting at 1...\n\n\n");
+  // result = insert_nth(my_list, node1, 1);
+  // print_list(result); // 1,2,3,4
+
+  // my_list = prepend_node(node4, node3); 
+  // print_list(my_list);
+  // my_list = prepend_node(my_list, node1); // 1,3,4
+  // printf("\n\n\n inserting at 2...\n\n\n");
+  // result = insert_nth(my_list, node2, 2);
+  // print_list(result);
+
+  // my_list = prepend_node(node3, node2);
+  // my_list = prepend_node(my_list, node1); // 1,2,3
+  // printf("\n\n\n inserting at 4...\n\n\n");
+  // result = insert_nth(my_list, node4, 4);
+  // print_list(result);
 
   /* The system command forces the system to pause */
   // system("pause");

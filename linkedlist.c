@@ -88,13 +88,14 @@ node* create_node(airplane plane)
 node* prepend_node(node* list, node* new_node)
 {
   // Insert your code here
-  node* temp = new_node;
-  printf("list is orignally %p\n", list);
+  if (list == NULL) {
+    return new_node;
+  }
+
   new_node->next = list;
-  printf("new_node->next is now pointing to %p\n", new_node->next);
-  list = temp;
-  printf("list is now pointing to %p\n", list);
-  return list;
+  // printf("list %p\n", list);
+  // printf("next node %p\n", new_node->next);
+  return new_node;
 }
 
 /*
@@ -121,6 +122,8 @@ node* delete_node(node* list)
 
   node* shortened_list = list;
   shortened_list = list->next;
+  free(list->plane.city_origin);
+  free(list->plane.city_destination);
   free(list);
   return shortened_list;
 }
@@ -302,8 +305,12 @@ node* remove_from_list(node* list, char* destination_city)
 node* retrieve_nth(node* list, int ordinality)
 {
   // Insert your code here
+  if (list == NULL) {
+    return NULL;
+  }
+
   node* nth = list;
-  for (int i = 0; (nth->next != NULL)&&(i<ordinality); i++) {
+  for (int i = 1; (nth->next != NULL)&&(i<ordinality); i++) {
     nth=nth->next;
   }
   // replace this line with something appropriate
@@ -331,7 +338,21 @@ node* retrieve_nth(node* list, int ordinality)
 node* insert_nth(node* list, node* node_to_insert, int ordinality)
 {
   // Insert your code here
+  if (list == NULL) {
+    return node_to_insert;
+  }
 
-  // replace this line with something appropriate
-  return NULL;
+  if (ordinality == 1) { // simple prepend_node operation
+    return prepend_node(list, node_to_insert);
+  }
+
+  node* nth_minus_1 = retrieve_nth(list, ordinality-1);
+  if (nth_minus_1 == NULL) { // ordinality > length of list + 1
+    return list;
+  }
+  // printf("retrieved nth-1: %d\n", nth_minus_1->plane.flight_number);
+  node* nth = prepend_node(nth_minus_1->next, node_to_insert);
+  // print_node(nth);
+  nth_minus_1->next = nth;
+  return list;
 }
