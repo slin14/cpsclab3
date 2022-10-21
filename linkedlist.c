@@ -160,8 +160,9 @@ int get_length(node* list)
 node* delete_list(node* list)
 {
   // Insert your code here
-  node* temp = list;
-  node* to_free;
+  node* to_free = list;
+  node* temp = list-> next;
+  free(to_free);
   while(temp->next!= NULL) {
     to_free = temp;
     free(to_free);
