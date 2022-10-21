@@ -163,14 +163,16 @@ node* delete_list(node* list)
   if (list == NULL) {
     return NULL;
   }
-  node* to_free = list;
+  node* to_free;
   node* temp = list;
 
   do {
     to_free = temp;
+    free(to_free->plane.city_origin);
+    free(to_free->plane.city_destination);
     free(to_free);
-    temp = temp-> next;
-  } while(temp->next!= NULL);
+    temp = temp->next;
+  } while(temp!= NULL);
 
   return NULL;
 }

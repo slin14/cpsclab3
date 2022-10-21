@@ -69,6 +69,7 @@ node* swap (node* front, node* x) {
 int main(void)
 {
   node* my_node;
+  node* test;
   my_node = create_linked_list();
   // printf("flight_number = %d\n", my_node->plane.flight_number);
   // printf("next = %p\n", my_node->next);
@@ -153,9 +154,9 @@ int main(void)
 
 
   // // TEST DELETE_LIST
-  // printf("\n\n\ndeleting my list...\n\n\n");
-  // my_list=delete_list(my_list);
-  // print_list(my_list);
+  printf("\n\n\ndeleting my list...\n\n\n");
+  test=delete_list(my_list);
+  print_list(my_list);
 
   // my_list = delete_list(NULL);
   // print_list(my_list);
