@@ -69,7 +69,6 @@ node* swap (node* front, node* x) {
 int main(void)
 {
   node* my_node;
-  node* test;
   node* my_empty_list = NULL;
   node* node1;
   node* node2;
@@ -201,9 +200,6 @@ int main(void)
 
 
   // // TEST DELETE_LIST
-  // printf("\n\n\ndeleting my list...\n\n\n");
-  // test=delete_list(my_list);
-  // print_list(test);
 
   // printf("\n\n\ndeleting an empty list...\n\n\n");
   // my_list = delete_list(NULL);
@@ -220,6 +216,7 @@ int main(void)
   printf("\n");
   printf("\n");
 
+  one_node_list = node1;
   print_list(one_node_list);
   printf("\n\n\ndeleting my 1 node list...\n\n\n");
   one_node_list = node1;
@@ -263,5 +260,15 @@ int main(void)
 
   /* The system command forces the system to pause */
   // system("pause");
+
+
+  delete_list(my_node);
+  delete_list(my_empty_list);
+  // delete_list(node1);
+  // delete_list(node2);
+  // delete_list(node3);
+  // delete_list(result);
+  // delete_list(my_list);
+  // delete_list(my_list_shortened);
   return 0;
 }

@@ -190,10 +190,9 @@ node* delete_list(node* list)
   }
 
   while (list->next != NULL) {
-    delete_node(list);
-    list = list->next;
+    list = delete_node(list);
   }
-  return delete_node(list);
+  return list;
   // free(list->plane.city_origin);
   // free(list->plane.city_destination);
   // free(list);
