@@ -346,9 +346,14 @@ node* retrieve_nth(node* list, int ordinality)
  */
 node* insert_nth(node* list, node* node_to_insert, int ordinality)
 {
-  // Insert your code here
-  if (list == NULL) {
+  int length = get_length(list);
+  if (ordinality > length + 1) {
     return list;
+  }
+
+  // ordinality <= length of list + 1
+  if (list == NULL) {
+    return node_to_insert;
   }
 
   if (ordinality == 1) { // simple prepend_node operation
@@ -359,9 +364,7 @@ node* insert_nth(node* list, node* node_to_insert, int ordinality)
   if (nth_minus_1 == NULL) { // ordinality > length of list + 1
     return list;
   }
-  // printf("retrieved nth-1: %d\n", nth_minus_1->plane.flight_number);
   node* nth = prepend_node(nth_minus_1->next, node_to_insert);
-  // print_node(nth);
   nth_minus_1->next = nth;
   return list;
 }
