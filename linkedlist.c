@@ -158,7 +158,6 @@ int get_length(node* list)
     count++;
     temp = temp->next;
   }
-
   return count;
 }
 
@@ -259,7 +258,7 @@ void print_list(node* list_to_print)
  RETURN:    a list of struct node that is the reverse of the list passed as a
             parameter
  */
-node* reverse(node* list)
+node* reverse(node* list) // TODO
 {
   // Insert your code here
   node* not_rev = list->next;
@@ -284,7 +283,7 @@ node* reverse(node* list)
  RETURN:    a list of struct node that does not contain any struct node that
             has an airplane destined for the destination_city
  */
-node* remove_from_list(node* list, char* destination_city)
+node* remove_from_list(node* list, char* destination_city) // TODO
 {
   // Insert your code here
 
@@ -305,7 +304,6 @@ node* remove_from_list(node* list, char* destination_city)
  */
 node* retrieve_nth(node* list, int ordinality)
 {
-  // Insert your code here
   if (list == NULL) { // list has at least 1 node
     return NULL;
   }
