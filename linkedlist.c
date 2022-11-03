@@ -117,14 +117,33 @@ node* delete_node(node* list)
   }
 
   if (list->next == NULL) { // list only has 1 element, which we remove
-    return NULL;
+    char * delete_origin = list->plane.city_origin;
+    char * delete_dest   = list->plane.city_destination;
+
+    list->plane.city_origin = NULL;
+    list->plane.city_destination = NULL;
+
+    free(list->plane.city_origin);
+    free(list->plane.city_destination);
+
+    free(list);
+    list = NULL;
+    return list;
   }
 
   node* shortened_list = list;
   shortened_list = list->next;
+  char * delete_origin = list->plane.city_origin;
+  char * delete_dest   = list->plane.city_destination;
+
+  list->plane.city_origin = NULL;
+  list->plane.city_destination = NULL;
+
   free(list->plane.city_origin);
   free(list->plane.city_destination);
+
   free(list);
+  list = NULL;
   return shortened_list;
 }
 
@@ -162,22 +181,33 @@ int get_length(node* list)
  */
 node* delete_list(node* list)
 {
-  // Insert your code here
   if (list == NULL) {
-    return NULL;
+    return list;
   }
-  node* to_free;
-  node* temp = list;
+  while (list->next != NULL) {
+    delete_node(list);
+    list = list->next;
+  }
+  free(list->plane.city_origin);
+  free(list->plane.city_destination);
+  free(list);
+  return list;
+  // // Insert your code here
+  // if (list == NULL) {
+  //   return NULL;
+  // }
+  // node* to_free;
+  // node* temp = list;
 
-  do {
-    to_free = temp;
-    free(to_free->plane.city_origin);
-    free(to_free->plane.city_destination);
-    free(to_free);
-    temp = temp->next;
-  } while(temp!= NULL);
+  // do {
+  //   to_free = temp;
+  //   free(to_free->plane.city_origin);
+  //   free(to_free->plane.city_destination);
+  //   free(to_free);
+  //   temp = temp->next;
+  // } while(temp!= NULL);
 
-  return NULL;
+  // return NULL;
 }
 
 /*
