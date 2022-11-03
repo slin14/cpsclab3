@@ -185,9 +185,9 @@ node* delete_list(node* list)
     return list;
   }
   
-  if (list->next == NULL) {
-    return delete_node(list);
-  }
+  // if (list->next == NULL) {
+  //   return delete_node(list);
+  // }
 
   while (list->next != NULL) {
     list = delete_node(list);
