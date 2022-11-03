@@ -348,7 +348,7 @@ node* insert_nth(node* list, node* node_to_insert, int ordinality)
 {
   // Insert your code here
   if (list == NULL) {
-    return node_to_insert;
+    return list;
   }
 
   if (ordinality == 1) { // simple prepend_node operation
