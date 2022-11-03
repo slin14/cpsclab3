@@ -192,7 +192,7 @@ node* delete_list(node* list)
   while (list->next != NULL) {
     list = delete_node(list);
   }
-  return list;
+  return delete_node(list);
   // free(list->plane.city_origin);
   // free(list->plane.city_destination);
   // free(list);
