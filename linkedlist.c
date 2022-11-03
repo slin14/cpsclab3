@@ -48,8 +48,6 @@ node* create_linked_list()
  */
 node* create_node(airplane plane)
 {
-  // Insert your code here
-
   // allocate heap memory for the new node
   struct node* newnode = (struct node*) malloc(sizeof(struct node));
   newnode->plane.flight_number = plane.flight_number;
@@ -62,15 +60,12 @@ node* create_node(airplane plane)
   char* plane_city_origin = (char*) malloc(sizeof(char) * strlen(plane.city_origin));
   strcpy(plane_city_origin, plane.city_origin);
   newnode->plane.city_origin = plane_city_origin;
-  // printf("FUNC newnode->myplane.city_dest = %s\n", newnode->plane.city_origin);
 
   char* plane_city_destination = (char*) malloc(sizeof(char) * strlen(plane.city_destination));
   strcpy(plane_city_destination, plane.city_destination);
   newnode->plane.city_destination = plane_city_destination;
-  // printf("FUNC myplane.city_dest = %s\n", newnode->plane.city_destination);
 
   newnode->next = NULL;
-
   return newnode;
 }
 
@@ -87,14 +82,11 @@ node* create_node(airplane plane)
  */
 node* prepend_node(node* list, node* new_node)
 {
-  // Insert your code here
   if (list == NULL) {
     return new_node;
   }
 
   new_node->next = list;
-  // printf("list %p\n", list);
-  // printf("next node %p\n", new_node->next);
   return new_node;
 }
 
@@ -117,8 +109,8 @@ node* delete_node(node* list)
   }
 
   if (list->next == NULL) { // list only has 1 element, which we remove
-    char * delete_origin = list->plane.city_origin;
-    char * delete_dest   = list->plane.city_destination;
+    char* delete_origin = list->plane.city_origin;
+    char* delete_dest   = list->plane.city_destination;
 
     list->plane.city_origin = NULL;
     list->plane.city_destination = NULL;
@@ -133,8 +125,8 @@ node* delete_node(node* list)
 
   node* shortened_list = list;
   shortened_list = list->next;
-  char * delete_origin = list->plane.city_origin;
-  char * delete_dest   = list->plane.city_destination;
+  char* delete_origin = list->plane.city_origin;
+  char* delete_dest   = list->plane.city_destination;
 
   list->plane.city_origin = NULL;
   list->plane.city_destination = NULL;
@@ -167,7 +159,6 @@ int get_length(node* list)
     temp = temp->next;
   }
 
-  // replace this line with something appropriate
   return count;
 }
 
@@ -185,34 +176,10 @@ node* delete_list(node* list)
     return list;
   }
   
-  // if (list->next == NULL) {
-  //   return delete_node(list);
-  // }
-
   while (list->next != NULL) {
     list = delete_node(list);
   }
   return delete_node(list);
-  // free(list->plane.city_origin);
-  // free(list->plane.city_destination);
-  // free(list);
-  // return list;
-  // // Insert your code here
-  // if (list == NULL) {
-  //   return NULL;
-  // }
-  // node* to_free;
-  // node* temp = list;
-
-  // do {
-  //   to_free = temp;
-  //   free(to_free->plane.city_origin);
-  //   free(to_free->plane.city_destination);
-  //   free(to_free);
-  //   temp = temp->next;
-  // } while(temp!= NULL);
-
-  // return NULL;
 }
 
 /*
