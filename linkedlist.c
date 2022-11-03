@@ -148,10 +148,10 @@ node* delete_node(node* list)
  */
 int get_length(node* list)
 {
-  // Insert your code here
   if (list == NULL) {
     return 0;
   }
+
   int count = 1;
   node* temp = list;
   while(temp->next != NULL){
@@ -234,7 +234,6 @@ void print_node(node* node_to_print)
  */
 void print_list(node* list_to_print)
 {
-  // Insert your code here
   if (list_to_print == NULL) {
     printf("The list is empty\n");
     return;
@@ -307,16 +306,24 @@ node* remove_from_list(node* list, char* destination_city)
 node* retrieve_nth(node* list, int ordinality)
 {
   // Insert your code here
-  if (list == NULL) {
+  if (list == NULL) { // list has at least 1 node
     return NULL;
   }
 
-  node* nth = list;
-  for (int i = 1; (nth->next != NULL)&&(i<ordinality); i++) {
-    nth=nth->next;
+  if (ordinality == 1) { // return 1st node
+    return list;
   }
-  // replace this line with something appropriate
-  return nth;
+
+  int length = get_length(list);
+  if (ordinality <= length) { // return nth node
+    node* nth = list;
+    for (int i = 1; (nth->next != NULL)&&(i<ordinality); i++) {
+      nth=nth->next;
+    }
+    return nth;
+  }
+
+  return NULL; // ordinality > length of list
 }
 
 /*
