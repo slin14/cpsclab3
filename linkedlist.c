@@ -184,14 +184,20 @@ node* delete_list(node* list)
   if (list == NULL) {
     return list;
   }
+  
+  if (list->next == NULL) {
+    return delete_node(list);
+  }
+
   while (list->next != NULL) {
     delete_node(list);
     list = list->next;
   }
-  free(list->plane.city_origin);
-  free(list->plane.city_destination);
-  free(list);
-  return list;
+  return delete_node(list);
+  // free(list->plane.city_origin);
+  // free(list->plane.city_destination);
+  // free(list);
+  // return list;
   // // Insert your code here
   // if (list == NULL) {
   //   return NULL;

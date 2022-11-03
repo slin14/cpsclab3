@@ -76,6 +76,8 @@ int main(void)
   node* node3;
   node* result;
   node* my_list;
+  node* my_list_shortened = NULL;
+  node* one_node_list;
   
   my_node = create_linked_list();
   // printf("flight_number = %d\n", my_node->plane.flight_number);
@@ -111,7 +113,7 @@ int main(void)
                       .priority = 2,
                       .maximum_speed_kph = 2000,
                       .cruising_altitude = 40000,
-                      .capacity = 40 };
+                      .capacity = 35 };
   
   node2 = create_node(plane2);
   // printf("node2->plane.city_destination = %s\n", node2->plane.city_destination);
@@ -134,7 +136,7 @@ int main(void)
                       .priority = 4,
                       .maximum_speed_kph = 2000,
                       .cruising_altitude = 40000,
-                      .capacity = 40 };
+                      .capacity = 56 };
   node* node4 = create_node(plane4);
 
   // TEST PREPEND
@@ -143,14 +145,14 @@ int main(void)
   // node1->next = node2;
   // print_list(my_list);
 
-  printf("\n\n\n prepending to a node...\n\n\n");
+  // printf("\n\n\n prepending to a node...\n\n\n");
   my_list = prepend_node(node2, my_node);
-  print_list(my_list);
+  // print_list(my_list);
   printf("\n");
 
-  printf("\n\n\n prepending to a list...\n\n\n");
+  // printf("\n\n\n prepending to a list...\n\n\n");
   result = prepend_node(my_list, node3);
-  print_list(result);
+  // print_list(result);
   printf("\n");
 
   my_list = result;
@@ -161,18 +163,21 @@ int main(void)
   // // TESTING DELETE_NODE
   // print_list(my_list);
   // printf("\n\n\ndeleting my node...\n\n\n");
-  // node* my_list_shortened = NULL;
+  // my_list_shortened = NULL;
   // my_list_shortened = delete_node(my_list);
   // printf("\n");
   // print_list(my_list_shortened);
 
-  print_list(my_list);
-  printf("\n\n\ndeleting node of a list with 1 node...\n\n\n");
-  node* my_list_shortened = NULL;
-  node* one_node_list = node1;
-  my_list_shortened = delete_node(one_node_list); // TODO
-  printf("\n");
-  print_list(my_list_shortened);
+  // printf("\n");
+  // printf("\n");
+  // printf("\n");
+
+  // print_list(one_node_list);
+  // printf("\n\n\ndeleting node of a list with 1 node...\n\n\n");
+  // one_node_list = node1;
+  // my_list_shortened = delete_node(one_node_list); // TODO
+  // printf("\n");
+  // print_list(my_list_shortened);
 
   // printf("\n\n\ndeleting node from an empty list.\n\n\n");
   // create_linked_list(my_empty_list);
@@ -203,6 +208,25 @@ int main(void)
   // printf("\n\n\ndeleting an empty list...\n\n\n");
   // my_list = delete_list(NULL);
   // print_list(my_list);
+
+  print_list(my_list);
+  printf("\n\n\ndeleting my list...\n\n\n");
+  my_list_shortened = NULL;
+  my_list_shortened = delete_list(my_list);
+  printf("\n");
+  print_list(my_list_shortened);
+
+  printf("\n");
+  printf("\n");
+  printf("\n");
+
+  print_list(one_node_list);
+  printf("\n\n\ndeleting my 1 node list...\n\n\n");
+  one_node_list = node1;
+  result = delete_list(one_node_list); // TODO
+  printf("\n");
+  printf("result = %p\n", result);
+  print_list(result);
 
 
 
