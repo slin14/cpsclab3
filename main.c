@@ -145,14 +145,16 @@ int main(void)
   // print_list(my_list);
 
   // printf("\n\n\n prepending to a node...\n\n\n");
-  my_list = prepend_node(node2, my_node);
+  result = prepend_node(node4, node3);
   // print_list(my_list);
   printf("\n");
 
   // printf("\n\n\n prepending to a list...\n\n\n");
-  result = prepend_node(my_list, node3);
+  result = prepend_node(result, node2);
   // print_list(result);
   printf("\n");
+
+  result = prepend_node(result, node1);
 
   my_list = result;
 
@@ -205,25 +207,25 @@ int main(void)
   // my_list = delete_list(NULL);
   // print_list(my_list);
 
-  print_list(my_list);
-  printf("\n\n\ndeleting my list...\n\n\n");
-  my_list_shortened = NULL;
-  my_list_shortened = delete_list(my_list);
-  printf("\n");
-  print_list(my_list_shortened);
+  // print_list(my_list);
+  // printf("\n\n\ndeleting my list...\n\n\n");
+  // my_list_shortened = NULL;
+  // my_list_shortened = delete_list(my_list);
+  // printf("\n");
+  // print_list(my_list_shortened);
 
-  printf("\n");
-  printf("\n");
-  printf("\n");
+  // printf("\n");
+  // printf("\n");
+  // printf("\n");
 
-  one_node_list = node1;
-  print_list(one_node_list);
-  printf("\n\n\ndeleting my 1 node list...\n\n\n");
-  one_node_list = node1;
-  result = delete_list(one_node_list); // TODO
-  printf("\n");
-  printf("result = %p\n", result);
-  print_list(result);
+  // one_node_list = node1;
+  // print_list(one_node_list);
+  // printf("\n\n\ndeleting my 1 node list...\n\n\n");
+  // one_node_list = node1;
+  // result = delete_list(one_node_list); // TODO
+  // printf("\n");
+  // printf("result = %p\n", result);
+  // print_list(result);
 
 
 
@@ -260,6 +262,13 @@ int main(void)
 
   /* The system command forces the system to pause */
   // system("pause");
+
+  // TEST REVERSE
+  print_list(my_list);
+  printf("\n\n\nreversing my list...\n\n\n");
+  result = reverse(my_list);
+  printf("\n");
+  print_list(result);
 
 
   delete_list(my_node);

@@ -260,15 +260,52 @@ void print_list(node* list_to_print)
  */
 node* reverse(node* list) // TODO
 {
-  // Insert your code here
-  node* not_rev = list->next;
-  while(not_rev->next != NULL) {
-    //SWAP list with not_rev
-    not_rev = not_rev->next;
+  if (list == NULL) {
+    return list;
+  }
+  if (list->next == NULL) {
+    return list;
   }
 
-  // replace this line with something appropriate
-  return NULL;
+
+  // node* temp_front = list; // pointer to start of original list (will point to the tail of reversed list)
+  node* next_node = list->next;
+  node* temp_node = create_node(next_node->plane);
+  // node* next_next_node = list->next->next;
+  node* front = prepend_node(list, temp_node);
+  // printf("REVERSE next_node\n");
+  // print_node(next_node);
+  // front->next = list;
+  // next_node->next = next_next_node;
+  list = delete_node(next_node);
+  front->next->next = list;
+  printf("REVERSE before while loop\n");
+  print_list(front);
+
+  
+  while (list->next != NULL) {
+    next_node = list;
+    front = prepend_node(front, next_node);
+    list = delete_node(next_node);
+    // // temp_front = list;
+    // next_node = list->next;
+    // front = prepend_node(list, next_node);
+    // //list = next_node->next;
+    // list = delete_node(next_node);
+  }
+  front = prepend_node(front, list);
+  list = delete_node(list);
+  return front;
+
+  // Insert your code here
+//   node* not_rev = list->next;
+//   while(not_rev->next != NULL) {
+//     //SWAP list with not_rev
+//     not_rev = not_rev->next;
+//   }
+
+//   // replace this line with something appropriate
+//   return NULL;
 }
 
 /*
