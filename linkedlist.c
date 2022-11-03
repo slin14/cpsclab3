@@ -267,45 +267,30 @@ node* reverse(node* list) // TODO
     return list;
   }
 
-
-  // node* temp_front = list; // pointer to start of original list (will point to the tail of reversed list)
+  node* last_node = list;
   node* next_node = list->next;
-  node* temp_node = create_node(next_node->plane);
-  // node* next_next_node = list->next->next;
+  node* temp_node = create_node(next_node->plane); // create a temporary node
   node* front = prepend_node(list, temp_node);
-  // printf("REVERSE next_node\n");
-  // print_node(next_node);
-  // front->next = list;
-  // next_node->next = next_next_node;
   list = delete_node(next_node);
-  front->next->next = list;
-  printf("REVERSE before while loop\n");
-  print_list(front);
+  front->next->next = list; // connect the list
 
-  
   while (list->next != NULL) {
     next_node = list;
-    front = prepend_node(front, next_node);
+    temp_node = create_node(next_node->plane);
+    front = prepend_node(front, temp_node);
     list = delete_node(next_node);
-    // // temp_front = list;
-    // next_node = list->next;
-    // front = prepend_node(list, next_node);
-    // //list = next_node->next;
-    // list = delete_node(next_node);
+    front->next->next = list; // connect the list
   }
-  front = prepend_node(front, list);
-  list = delete_node(list);
+  next_node = list;
+  temp_node = create_node(next_node->plane);
+  front = prepend_node(front, temp_node);
+  delete_node(next_node);
+  next_node = NULL;
+
+  // set last_node in list to point to NULL
+  last_node->next = NULL;
   return front;
 
-  // Insert your code here
-//   node* not_rev = list->next;
-//   while(not_rev->next != NULL) {
-//     //SWAP list with not_rev
-//     not_rev = not_rev->next;
-//   }
-
-//   // replace this line with something appropriate
-//   return NULL;
 }
 
 /*
@@ -322,10 +307,46 @@ node* reverse(node* list) // TODO
  */
 node* remove_from_list(node* list, char* destination_city) // TODO
 {
-  // Insert your code here
+  if (list == NULL) {
+    return list;
+  }
+  if (list->next == NULL) { // list only has 1 node
+    if (strcmp(destination_city, list->plane.city_destination) == 0) {
+      return delete_node(list);
+    } else {
+      return list;
+    }
+  }
+  node* temp = list;
+  node* prev_node = NULL;
+  node* next_node = list->next;
+  while(temp->next != NULL) {
+    next_node = temp->next;
+    if (strcmp(destination_city, temp->plane.city_destination) == 0) {
+      prev_node = temp;
+      temp = delete_node(temp); // temp becomes the next node
+      if (temp == NULL) { 
+        if (prev_node == list) { // removed first node
+          list = next_node;
+          temp = next_node;
+        }
+        else { // removed last node in list
+          prev_node->next = NULL;
+          return list;
+        }
+      }
+      prev_node->next = temp; // re-link list
+    } else {
+      prev_node = temp;
+      temp = temp->next;
+    }
+  }
+  // last node
+  if (strcmp(destination_city, temp->plane.city_destination) == 0) {
+    //
+  }
 
-  // replace this line with something appropriate
-  return NULL;
+  return list;
 }
 
 /*
