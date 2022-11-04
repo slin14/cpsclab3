@@ -31,7 +31,6 @@
   */
 node* create_linked_list()
 {
-  // Insert your code here
   return NULL;
 }
 
@@ -103,7 +102,6 @@ node* prepend_node(node* list, node* new_node)
  */
 node* delete_node(node* list)
 {
-  // Insert your code here
   if (list == NULL) { // empty list
     return NULL;
   }
@@ -112,11 +110,11 @@ node* delete_node(node* list)
     char* delete_origin = list->plane.city_origin;
     char* delete_dest   = list->plane.city_destination;
 
-    list->plane.city_origin = NULL;
-    list->plane.city_destination = NULL;
-
     free(list->plane.city_origin);
     free(list->plane.city_destination);
+
+    list->plane.city_origin = NULL;
+    list->plane.city_destination = NULL;
 
     free(list);
     list = NULL;
@@ -128,11 +126,11 @@ node* delete_node(node* list)
   char* delete_origin = list->plane.city_origin;
   char* delete_dest   = list->plane.city_destination;
 
-  list->plane.city_origin = NULL;
-  list->plane.city_destination = NULL;
-
   free(list->plane.city_origin);
   free(list->plane.city_destination);
+
+  list->plane.city_origin = NULL;
+  list->plane.city_destination = NULL;
 
   free(list);
   list = NULL;

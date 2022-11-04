@@ -354,11 +354,16 @@ int main(void)
 
   delete_list(my_node);
   delete_list(my_empty_list);
-  // delete_list(node1);
-  // delete_list(node2);
-  // delete_list(node3);
-  // delete_list(result);
-  // delete_list(my_list);
-  // delete_list(my_list_shortened);
+  delete_list(node1);
+  delete_list(node2);
+  delete_list(node3);
+  delete_list(node4);
+  delete_list(result);
+  delete_list(my_list);
+  delete_list(my_list_shortened);
+  delete_list(one_node_list);
+  delete_list(node1_copy);
+  delete_list(node4_copy);
+  delete_list(node4_copy2);
   return 0;
 }
