@@ -237,11 +237,9 @@ void print_list(node* list_to_print)
     printf("The list is empty\n");
     return;
   }
-
   // print first node
   node* temp = list_to_print;
   print_node(temp);
-  
   // print following nodes (if any)
   while(temp->next != NULL) {
     temp = temp->next;
@@ -274,9 +272,6 @@ node* reverse(node* list) // TODO
     prev->next = next;
     curr->next = list;
     list = curr;
-    // printf("\nREVERSE\n");
-    // print_list(list);
-    // printf("\n\n");
     curr = next;
   }
   curr->next = list;
@@ -389,7 +384,6 @@ node* retrieve_nth(node* list, int ordinality)
     }
     return nth;
   }
-
   return NULL; // ordinality > length of list
 }
 
