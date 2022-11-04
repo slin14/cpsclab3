@@ -260,37 +260,29 @@ void print_list(node* list_to_print)
  */
 node* reverse(node* list) // TODO
 {
-  if (list == NULL) {
+  if (list == NULL) { // no node list (trivial)
     return list;
   }
-  if (list->next == NULL) {
+  if (list->next == NULL) { // 1 node list (trivial)
     return list;
   }
-
-  node* last_node = list;
-  node* next_node = list->next;
-  node* temp_node = create_node(next_node->plane); // create a temporary node
-  node* front = prepend_node(list, temp_node);
-  list = delete_node(next_node);
-  front->next->next = list; // connect the list
-
-  while (list->next != NULL) {
-    next_node = list;
-    temp_node = create_node(next_node->plane);
-    front = prepend_node(front, temp_node);
-    list = delete_node(next_node);
-    front->next->next = list; // connect the list
+  node* prev = list;
+  node* curr = list->next;
+  node* next = NULL;
+  while(curr->next != NULL) {
+    next = curr->next;
+    prev->next = next;
+    curr->next = list;
+    list = curr;
+    // printf("\nREVERSE\n");
+    // print_list(list);
+    // printf("\n\n");
+    curr = next;
   }
-  next_node = list;
-  temp_node = create_node(next_node->plane);
-  front = prepend_node(front, temp_node);
-  delete_node(next_node);
-  next_node = NULL;
-
-  // set last_node in list to point to NULL
-  last_node->next = NULL;
-  return front;
-
+  curr->next = list;
+  prev->next = NULL;
+  list = curr;
+  return list;
 }
 
 /*

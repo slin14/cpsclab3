@@ -191,10 +191,10 @@ int main(void)
   my_list = result;
 
 
-  // Hong Kong, HK, HK
-  result = prepend_node(node4, node4_copy2);
-  result = prepend_node(result, node4_copy);
-  my_list = result;
+  // // Hong Kong, HK, HK
+  // result = prepend_node(node4, node4_copy2);
+  // result = prepend_node(result, node4_copy);
+  // my_list = result;
 
   
   // printf("after prepend\n");
@@ -302,11 +302,11 @@ int main(void)
   // system("pause");
 
   // TEST REVERSE
-  // print_list(my_list);
-  // printf("\n\n\nreversing my list...\n\n\n");
-  // result = reverse(my_list);
-  // printf("\n");
-  // print_list(result);
+  print_list(my_list);
+  printf("\n\n\nreversing my list...\n\n\n");
+  result = reverse(my_list);
+  printf("\n");
+  print_list(result);
 
   // TEST REMOVE FROM LIST
   // print_list(my_list);
@@ -345,11 +345,11 @@ int main(void)
   // printf("\n");
   // print_list(result);
 
-  print_list(my_list);
-  printf("\n\n\nremoving 3rd, 2nd last and last Hong Kong from my list...\n\n\n");
-  result = remove_from_list(my_list, "Hong Kong");
-  printf("\n");
-  print_list(result);
+  // print_list(my_list);
+  // printf("\n\n\nremoving 3rd, 2nd last and last Hong Kong from my list...\n\n\n");
+  // result = remove_from_list(my_list, "Hong Kong");
+  // printf("\n");
+  // print_list(result);
 
 
   delete_list(my_node);
