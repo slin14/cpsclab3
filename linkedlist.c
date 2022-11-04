@@ -48,24 +48,9 @@ node* create_linked_list()
  */
 node* create_node(airplane plane)
 {
-  // allocate heap memory for the new node
   struct node* newnode = (struct node*) malloc(sizeof(struct node));
-  newnode->plane.flight_number = plane.flight_number;
-  newnode->plane.priority = plane.priority;
-  newnode->plane.maximum_speed_kph = plane.maximum_speed_kph;
-  newnode->plane.cruising_altitude = plane.cruising_altitude;
-  newnode->plane.capacity = plane.capacity;
-
-  // allocate heap memory for char arrays in airplane struct
-  char* plane_city_origin = (char*) malloc(sizeof(char) * strlen(plane.city_origin));
-  strcpy(plane_city_origin, plane.city_origin);
-  newnode->plane.city_origin = plane_city_origin;
-
-  char* plane_city_destination = (char*) malloc(sizeof(char) * strlen(plane.city_destination));
-  strcpy(plane_city_destination, plane.city_destination);
-  newnode->plane.city_destination = plane_city_destination;
-
   newnode->next = NULL;
+  newnode->plane = plane;
   return newnode;
 }
 
@@ -103,40 +88,13 @@ node* prepend_node(node* list, node* new_node)
  */
 node* delete_node(node* list)
 {
-  // Insert your code here
   if (list == NULL) { // empty list
     return NULL;
   }
-
-  if (list->next == NULL) { // list only has 1 element, which we remove
-    char* delete_origin = list->plane.city_origin;
-    char* delete_dest   = list->plane.city_destination;
-
-    list->plane.city_origin = NULL;
-    list->plane.city_destination = NULL;
-
-    free(list->plane.city_origin);
-    free(list->plane.city_destination);
-
-    free(list);
-    list = NULL;
-    return list;
-  }
-
-  node* shortened_list = list;
-  shortened_list = list->next;
-  char* delete_origin = list->plane.city_origin;
-  char* delete_dest   = list->plane.city_destination;
-
-  list->plane.city_origin = NULL;
-  list->plane.city_destination = NULL;
-
-  free(list->plane.city_origin);
-  free(list->plane.city_destination);
-
-  free(list);
-  list = NULL;
-  return shortened_list;
+  node* temp = list;
+  list = list->next;
+  free(temp);
+  return list;
 }
 
 /*
@@ -195,12 +153,10 @@ node* delete_list(node* list)
  */
 void print_node(node* node_to_print)
 {
-  // Insert your code here
   if (node_to_print == NULL) {
     printf("The node is empty\n");
     return;
   }
-  
   // print plane
   printf("flight_number = %d\n", node_to_print->plane.flight_number);
   printf("city_orgin = %s\n", node_to_print->plane.city_origin);
@@ -209,7 +165,6 @@ void print_node(node* node_to_print)
   printf("maximum_speed_kph = %d\n", node_to_print->plane.maximum_speed_kph);
   printf("cruising_altitude = %d\n", node_to_print->plane.cruising_altitude);
   printf("capacity = %d\n", node_to_print->plane.capacity);
-
   // print link
   if (node_to_print->next == NULL) {
     printf("Link = NULL\n");
@@ -416,7 +371,6 @@ node* insert_nth(node* list, node* node_to_insert, int ordinality)
   if (list == NULL) {
     return node_to_insert;
   }
-
   if (ordinality == 1) { // simple prepend_node operation
     return prepend_node(list, node_to_insert);
   }
