@@ -317,35 +317,54 @@ node* remove_from_list(node* list, char* destination_city) // TODO
       return list;
     }
   }
+  // deal with the first node
   node* temp = list;
   node* prev_node = NULL;
+  if (strcmp(destination_city, temp->plane.city_destination) == 0) {
+    temp = delete_node(temp);
+    list = temp;
+  } else {
+    prev_node = list;
+  }
+  // deal with the following nodes
   node* next_node = list->next;
   while(temp->next != NULL) {
     next_node = temp->next;
     if (strcmp(destination_city, temp->plane.city_destination) == 0) {
-      prev_node = temp;
       temp = delete_node(temp); // temp becomes the next node
-      if (temp == NULL) { 
-        if (prev_node == list) { // removed first node
-          list = next_node;
-          temp = next_node;
-        }
-        else { // removed last node in list
+      if (prev_node == NULL) { // removed first node in list
+        list = temp;
+      } else {
+        prev_node->next = temp; // re-link list
+      }
+      if (temp == NULL) { // removed last node in list
+        if (prev_node == NULL) { // set next in the node before to NULl
+          return NULL;
+        } else {
           prev_node->next = NULL;
           return list;
         }
       }
-      prev_node->next = temp; // re-link list
     } else {
-      prev_node = temp;
+      if (prev_node == NULL) {
+        prev_node = list;
+      } else {
+        prev_node = temp;
+      }
       temp = temp->next;
     }
   }
-  // last node
+  // deal with the last node
   if (strcmp(destination_city, temp->plane.city_destination) == 0) {
-    //
+    temp = delete_node(temp);
+    if (prev_node == NULL) {
+      return NULL;
+    } 
+    else {
+      prev_node->next = NULL;
+      return list;
+    }
   }
-
   return list;
 }
 
