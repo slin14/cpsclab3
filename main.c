@@ -10,7 +10,9 @@
  Date:         Add the date here
  */
 
+// gcc main.c linkedlist.c linkedlist.h -o lab3
 // valgrind ./lab3 --leak-check=full
+// valgrind ./lab3 --leak-check=full > valgrind.rpt 2>&1
 
  /* Preprocessor directives */
 #include <stdio.h>
@@ -34,29 +36,26 @@
      THEN 0 ELSE 1
  */
 
+// void print_my_list(node* list) {
+//   if (list == NULL) {
+//     return;
+//   }
 
-// gcc main.c linkedlist.c linkedlist.h -o lab3
-
-void print_my_list(node* list) {
-  if (list == NULL) {
-    return;
-  }
-
-  node* temp = list;
-  printf("flight_num = %d\n", temp->plane.flight_number);
-  printf("city_dest = %s\n", temp->plane.city_destination);
-  printf("city_orig = %s\n", temp->plane.city_origin);
-  printf("\n");
+//   node* temp = list;
+//   printf("flight_num = %d\n", temp->plane.flight_number);
+//   printf("city_dest = %s\n", temp->plane.city_destination);
+//   printf("city_orig = %s\n", temp->plane.city_origin);
+//   printf("\n");
   
-  while(temp->next != NULL) {
-    temp = temp->next;
-    printf("flight_num = %d\n", temp->plane.flight_number);
-    printf("city_dest = %s\n", temp->plane.city_destination);
-    printf("city_orig = %s\n", temp->plane.city_origin);
-    printf("\n");
-  }
-  printf("\n\n");
-}
+//   while(temp->next != NULL) {
+//     temp = temp->next;
+//     printf("flight_num = %d\n", temp->plane.flight_number);
+//     printf("city_dest = %s\n", temp->plane.city_destination);
+//     printf("city_orig = %s\n", temp->plane.city_origin);
+//     printf("\n");
+//   }
+//   printf("\n\n");
+// }
 
 // swaps the nodes from the front to the node just before node x with node x
 // eg. 1 2 3 X 4 5
@@ -64,9 +63,9 @@ void print_my_list(node* list) {
 // return: the new front of the list
 // eg. X 1 2 3 4 5
 // returns 
-node* swap (node* front, node* x) {
-  // find the node just before node x (OR just let node y equal the node after node x and pass in node y)
-}
+// node* swap (node* front, node* x) {
+//   // find the node just before node x (OR just let node y equal the node after node x and pass in node y)
+// }
 
 int main(void)
 {
@@ -300,14 +299,11 @@ int main(void)
   // result = insert_nth(my_list, node4, 4);
   // print_list(result);
 
-  /* The system command forces the system to pause */
-  // system("pause");
-
   // TEST REVERSE
-  print_list(my_list);
+  // print_list(my_list);
   printf("\n\n\nreversing my list...\n\n\n");
   result = reverse(my_list);
-  printf("\n");
+  // printf("\n");
   print_list(result);
 
   // TEST REMOVE FROM LIST
