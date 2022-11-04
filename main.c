@@ -10,6 +10,8 @@
  Date:         Add the date here
  */
 
+// valgrind ./lab3 --leak-check=full
+
  /* Preprocessor directives */
 #include <stdio.h>
 #include <stdlib.h>

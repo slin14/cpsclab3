@@ -56,11 +56,11 @@ node* create_node(airplane plane)
   newnode->plane.capacity = plane.capacity;
 
   // allocate heap memory for char arrays in airplane struct
-  char* plane_city_origin = (char*) malloc(sizeof(char) * strlen(plane.city_origin));
+  char* plane_city_origin = (char*) malloc(sizeof(char) * (strlen(plane.city_origin)+1));
   strcpy(plane_city_origin, plane.city_origin);
   newnode->plane.city_origin = plane_city_origin;
 
-  char* plane_city_destination = (char*) malloc(sizeof(char) * strlen(plane.city_destination));
+  char* plane_city_destination = (char*) malloc(sizeof(char) * (strlen(plane.city_destination)+1));
   strcpy(plane_city_destination, plane.city_destination);
   newnode->plane.city_destination = plane_city_destination;
 
@@ -105,34 +105,26 @@ node* delete_node(node* list)
   if (list == NULL) { // empty list
     return NULL;
   }
-
+  node* temp = list;
   if (list->next == NULL) { // list only has 1 element, which we remove
     char* delete_origin = list->plane.city_origin;
     char* delete_dest   = list->plane.city_destination;
-
-    free(list->plane.city_origin);
-    free(list->plane.city_destination);
-
     list->plane.city_origin = NULL;
     list->plane.city_destination = NULL;
-
-    free(list);
+    free(delete_origin);
+    free(delete_dest);
+    free(temp);
     list = NULL;
     return list;
   }
-
-  node* shortened_list = list;
-  shortened_list = list->next;
+  node* shortened_list = list->next;
   char* delete_origin = list->plane.city_origin;
   char* delete_dest   = list->plane.city_destination;
-
-  free(list->plane.city_origin);
-  free(list->plane.city_destination);
-
   list->plane.city_origin = NULL;
   list->plane.city_destination = NULL;
-
-  free(list);
+  free(delete_origin);
+  free(delete_dest);
+  free(temp);
   list = NULL;
   return shortened_list;
 }
@@ -172,11 +164,14 @@ node* delete_list(node* list)
   if (list == NULL) {
     return list;
   }
-  
-  while (list->next != NULL) {
-    list = delete_node(list);
+  node* temp = list;
+  list = NULL;
+  while (list != NULL) {
+    temp = list;
+    list = list->next;
+    free(temp);
   }
-  return delete_node(list);
+  return list;
 }
 
 /*
