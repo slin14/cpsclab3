@@ -109,8 +109,8 @@ node* delete_node(node* list)
   if (list->next == NULL) { // list only has 1 element, which we remove
     char* delete_origin = list->plane.city_origin;
     char* delete_dest   = list->plane.city_destination;
-    list->plane.city_origin = NULL;
-    list->plane.city_destination = NULL;
+    // list->plane.city_origin = NULL;
+    // list->plane.city_destination = NULL;
     free(delete_origin);
     free(delete_dest);
     free(temp);
@@ -120,8 +120,8 @@ node* delete_node(node* list)
   node* shortened_list = list->next;
   char* delete_origin = list->plane.city_origin;
   char* delete_dest   = list->plane.city_destination;
-  list->plane.city_origin = NULL;
-  list->plane.city_destination = NULL;
+  // list->plane.city_origin = NULL;
+  // list->plane.city_destination = NULL;
   free(delete_origin);
   free(delete_dest);
   free(temp);
@@ -164,13 +164,19 @@ node* delete_list(node* list)
   if (list == NULL) {
     return list;
   }
-  node* temp = list;
-  list = NULL;
-  while (list != NULL) {
+
+  node* temp;
+  while (list->next != NULL) {
     temp = list;
-    list = list->next;
-    free(temp);
+    list = delete_node(temp);
+    // free(temp);
+    // list = list->next;
   }
+
+  temp = list;
+  // free(temp);
+  list = delete_node(temp);
+  list = NULL;
   return list;
 }
 
