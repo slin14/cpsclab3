@@ -1,27 +1,7 @@
-/*
- File:         linkedlist.c
- Purpose:      Implements the linked list functions whose prototypes
-               are declared in the linked_list.h header file
- Author:       Sophie Lin
- Student #s:   70196886
- CWLs:         slin14
- Date:         Oct. 16, 2022
- */
-
-#define _CRT_SECURE_NO_WARNINGS
-
- /* Preprocessor directives */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "linkedlist.h"
-
-/******************************************************************
- PLEASE EDIT THIS FILE
-
- Comments that start with // should be replaced with code
- Comments that are surrounded by * are hints
- ******************************************************************/
 
  /*
   Returns a pointer to a new, empty linked list of struct node.

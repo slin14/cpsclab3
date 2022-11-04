@@ -1,40 +1,14 @@
-/*
- File:         linkedlist.h
- Purpose:      Prototypes for a linked list implementation
- Author:       Sophie Lin
- Student #s:   70196886
- CWLs:         slin14
- Date:         Oct. 16, 2022
- */
-
-// TODO: uncomment below
-// #pragma once
-#define MAXLEN 50
-
- /******************************************************************
-	PLEASE EDIT THIS FILE
-
-	Comments that start with // should be replaced with code
-	Comments that are surrounded by * are hints
-	******************************************************************/
-
-	/* Insert your airplane structure here.  Use the correct types and names for the elements! */
 typedef struct airplane {
-	// Add your member elements here
 	int flight_number;
 	char* city_origin;
 	char* city_destination;
-	// char* city_origin[MAXLEN];
-	// char* city_destination[MAXLEN];
 	int priority;
 	int maximum_speed_kph;
 	int cruising_altitude;
 	int capacity;
 } airplane;
 
-/* Insert your node structure here.  Use the correct types and names for the elements! */
 typedef struct node {
-	// Add your member elements here
 	struct airplane plane;
 	struct node* next;
 } node;
